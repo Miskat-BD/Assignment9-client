@@ -1,9 +1,203 @@
-import React from 'react';
+'use client'
+import { Button, Card, FieldError, Input, Label, ListBox, TextArea, TextField, Select } from '@heroui/react';
 
 const AddTutorPage = () => {
+    const onSubmit = async (e)=>{
+        e.preventDefault();
+        const formData = new FormData(e.currentTarget);
+        const data = Object.fromEntries(formData.entries());
+        // console.log(data, 'tutor adding');
+        const res = await fetch('http://localhost:8080/tutors',{
+            method: "POST",
+            headers: {
+                'content-type':'application/json'
+            },
+            body: JSON.stringify(data)
+        })
+        const tutor = await res.json();
+        console.log(tutor, "form add");
+    }
     return (
-        <div>
-            add tutor form
+        <div className='p-5 max-w-7xl mx-auto'>
+            <h1 className='text-2xl font-bold '>Add Tutors</h1>
+            <Card>
+                <form
+                    onSubmit={onSubmit}
+                    className="p-10 space-y-8 max-w-3xl mx-auto"
+                >
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        {/* Tutor Name */}
+                        <div className="md:col-span-2">
+                            <TextField name="name" isRequired>
+                                <Label>Tutor Name</Label>
+                                <Input placeholder="Write Tutor Name" className="rounded-2xl" />
+                                <FieldError />
+                            </TextField>
+                        </div>
+
+                        {/* experience */}
+                        <TextField name="experience" isRequired>
+                            <Label>Experience</Label>
+                            <Input placeholder="" className="rounded-2xl" />
+                            <FieldError />
+                        </TextField>
+
+                        {/* Subject - Updated Select Component */}
+                        <div>
+                            <Select
+                                name="subject"
+                                isRequired
+                                className="w-full"
+                                placeholder="Select Subject"
+                            >
+                                <Label>Subject</Label>
+                                <Select.Trigger className="rounded-2xl">
+                                    <Select.Value />
+                                    <Select.Indicator />
+                                </Select.Trigger>
+                                <Select.Popover>
+                                    <ListBox>
+                                        <ListBox.Item id="Machematics" textValue="Machematics">
+                                            Machematics
+                                            <ListBox.ItemIndicator />
+                                        </ListBox.Item>
+                                        <ListBox.Item id="Physics" textValue="Physics">
+                                            Physics
+                                            <ListBox.ItemIndicator />
+                                        </ListBox.Item>
+                                        <ListBox.Item id="Chemistry" textValue="Chemistry">
+                                            Chemistry
+                                            <ListBox.ItemIndicator />
+                                        </ListBox.Item>
+                                        <ListBox.Item id="Biology" textValue="Biology">
+                                            Biology
+                                            <ListBox.ItemIndicator />
+                                        </ListBox.Item>
+                                        <ListBox.Item id="ICT" textValue="ICT">
+                                            ICT
+                                            <ListBox.ItemIndicator />
+                                        </ListBox.Item>
+                                        <ListBox.Item id="English" textValue="English">
+                                            English
+                                            <ListBox.ItemIndicator />
+                                        </ListBox.Item>
+                                    </ListBox>
+                                </Select.Popover>
+                            </Select>
+                        </div>
+
+                        {/* fee */}
+                        <TextField name="fee" type="number" isRequired>
+                            <Label>Hourly fee</Label>
+                            <Input
+                                type="number"
+                                placeholder="1299"
+                                className="rounded-2xl"
+                            />
+                            <FieldError />
+                        </TextField>
+
+                        {/* slot */}
+                        <TextField name="slot" type='number' isRequired>
+                            <Label>Total slot</Label>
+                            <Input
+                                placeholder=""
+                                className="rounded-2xl"
+                            />
+                            <FieldError />
+                        </TextField>
+
+                        {/* Session Start Date */}
+                        <div className="md:col-span-2">
+                            <TextField name="sessionStartDate" type="date" isRequired>
+                                <Label>Session Start Date</Label>
+                                <Input type="date" className="rounded-2xl" />
+                                <FieldError />
+                            </TextField>
+                        </div>
+
+                        {/* Image URL - Removed preview */}
+                        <div className="md:col-span-2">
+                            <TextField name="tutorImageUrl" isRequired>
+                                <Label>Tutor Image URL</Label>
+                                <Input
+                                    type="url"
+                                    placeholder="https://example.com/bali-paradise.jpg"
+                                    className="rounded-2xl"
+                                />
+                                <FieldError />
+                            </TextField>
+                        </div>
+
+                        {/* Available Days */}
+                        <div className="md:col-span-2">
+                            <TextField name="availableDays" isRequired>
+                                <Label>Available Days</Label>
+                                <TextArea
+                                    placeholder="Sun, Mon, Tues,..."
+                                    className="rounded-3xl"
+                                />
+                                <FieldError />
+                            </TextField>
+                        </div>
+                        {/* Location */}
+                        <div className="md:col-span-2">
+                            <TextField name="location" isRequired>
+                                <Label>Location</Label>
+                                <TextArea
+                                    placeholder="Write the location..."
+                                    className="rounded-3xl"
+                                />
+                                <FieldError />
+                            </TextField>
+                        </div>
+
+                        {/* Teaching Mode */}
+                        <div>
+                            <Select
+                                name="teachingMode"
+                                isRequired
+                                className="w-full"
+                                placeholder="Select Subject"
+                            >
+                                <Label>Teaching Mode</Label>
+                                <Select.Trigger className="rounded-2xl">
+                                    <Select.Value />
+                                    <Select.Indicator />
+                                </Select.Trigger>
+                                <Select.Popover>
+                                    <ListBox>
+                                        <ListBox.Item id="Online" textValue="Online">
+                                            Online
+                                            <ListBox.ItemIndicator />
+                                        </ListBox.Item>
+                                        <ListBox.Item id="Offline" textValue="Offline">
+                                            Offline
+                                            <ListBox.ItemIndicator />
+                                        </ListBox.Item>
+                                        <ListBox.Item id="Both" textValue="Both">
+                                            Both
+                                            <ListBox.ItemIndicator />
+                                        </ListBox.Item>
+                                    </ListBox>
+                                </Select.Popover>
+                            </Select>
+                        </div>
+                    </div>
+
+                    {/* Buttons */}
+
+                    <Button
+                        type="submit"
+                        variant="outline"
+                        // isLoading={isPending}
+                        className=" rounded-none w-full bg-cyan-500 text-white"
+                    >
+                        {/* {isPending ? "Adding Package..." : "Add Travel Package"} */}
+                        Add Tutor
+                    </Button>
+                </form>
+            </Card>
         </div>
     );
 };
