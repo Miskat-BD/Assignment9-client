@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import Link from 'next/link';
 import React from 'react';
 
 const TutorCard = ({ tutor }) => {
@@ -16,7 +17,7 @@ const TutorCard = ({ tutor }) => {
                     <p>Subject: {tutor.subject}</p>
                     <p>Session Start: {tutor.sessionStartDate}</p>
                     <div className="card-actions justify-center">
-                        <button className="btn btn-primary w-full">Book Session</button>
+                        <Link href={`/tutors/${tutor._id}`}><button className="btn btn-primary w-full">Book Session</button></Link>
                     </div>
                 </div>
             </div>

@@ -54,6 +54,7 @@ const Navbar = () => {
                         </div>
                         <div className="">
                             <Link href={'/login'}><button className="btn btn-primary text-white">Login</button></Link>
+                            <Link href={'/signup'}><button className="btn btn-info text-white">Register</button></Link>
                         </div>
                     </div>
                 </div>
