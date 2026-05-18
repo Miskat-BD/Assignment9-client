@@ -7,7 +7,7 @@ const TutorsPage = async () => {
     return (
         <div className="max-w-7xl mx-auto">
             <h1 className="text-2xl font-bold my-10">All Tutors</h1>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
             {
                 tutors.map(tutor => <TutorCard key={tutor._id} tutor={tutor}></TutorCard>)
             }
