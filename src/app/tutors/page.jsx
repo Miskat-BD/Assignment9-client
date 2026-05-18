@@ -3,11 +3,11 @@ import TutorCard from "@/components/TutorCard";
 const TutorsPage = async () => {
     const res = await fetch('http://localhost:8080/tutors');
     const tutors = await res.json();
-    console.log(tutors);
+    // console.log(tutors);
     return (
-        <div>
-            <h1 className="text-2xl font-bold">All Tutors</h1>
-            <div className="">
+        <div className="max-w-7xl mx-auto">
+            <h1 className="text-2xl font-bold my-10">All Tutors</h1>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
             {
                 tutors.map(tutor => <TutorCard key={tutor._id} tutor={tutor}></TutorCard>)
             }

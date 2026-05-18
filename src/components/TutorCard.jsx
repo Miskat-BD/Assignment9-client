@@ -1,21 +1,21 @@
 import Image from 'next/image';
 import React from 'react';
 
-const TutorCard = ({tutor}) => {
+const TutorCard = ({ tutor }) => {
     return (
         <div>
-            <div className="card bg-base-100 w-96 shadow-sm">
-                <figure className="px-10 pt-10">
+            <div className="card bg-base-100 w-96 shadow-sm border">
+                <figure>
                     <Image
                         src={tutor.tutorImageUrl}
-                        alt="Shoes"
-                        className="rounded-xl"
-                        width={300} height={300}/>
+                        width={300} height={300}
+                        alt="Shoes" />
                 </figure>
-                <div className="card-body items-center text-center">
-                    <h2 className="card-title">Card Title</h2>
-                    <p>A card component has a figure, a body part, and inside body there are title and actions parts</p>
-                    <div className="card-actions">
+                <div className="card-body">
+                    <h2 className="card-title">{tutor.name}</h2>
+                    <p>Subject: {tutor.subject}</p>
+                    <p>Session Start: {tutor.sessionStartDate}</p>
+                    <div className="card-actions justify-center">
                         <button className="btn btn-primary">Book Session</button>
                     </div>
                 </div>
