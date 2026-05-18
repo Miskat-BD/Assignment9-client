@@ -2,7 +2,7 @@ import Link from "next/link";
 
 const Banner = () => {
     return (
-        <div className='my-10'>
+        <div className='mt-10 mb-20'>
             <div className="carousel w-full">
                 <div id="slide1" className="carousel-item relative w-full">
                     <div
