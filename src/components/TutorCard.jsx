@@ -16,7 +16,7 @@ const TutorCard = ({ tutor }) => {
                     <p>Subject: {tutor.subject}</p>
                     <p>Session Start: {tutor.sessionStartDate}</p>
                     <div className="card-actions justify-center">
-                        <button className="btn btn-primary">Book Session</button>
+                        <button className="btn btn-primary w-full">Book Session</button>
                     </div>
                 </div>
             </div>
