@@ -1,3 +1,4 @@
+import TutorCard from "@/components/TutorCard";
 
 const TutorsPage = async () => {
     const res = await fetch('http://localhost:8080/tutors');
@@ -8,7 +9,7 @@ const TutorsPage = async () => {
             <h1 className="text-2xl font-bold">All Tutors</h1>
             <div className="">
             {
-                tutors.map(tutor => <div key={tutor._id}>{tutor.name}</div>)
+                tutors.map(tutor => <TutorCard key={tutor._id} tutor={tutor}></TutorCard>)
             }
             </div>
         </div>
