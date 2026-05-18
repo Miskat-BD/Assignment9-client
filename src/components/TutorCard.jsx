@@ -8,7 +8,7 @@ const TutorCard = ({ tutor }) => {
                 <figure>
                     <Image
                         src={tutor.tutorImageUrl}
-                        width={300} height={300}
+                        width={400} height={300}
                         alt="Shoes" />
                 </figure>
                 <div className="card-body">
