@@ -1,21 +1,47 @@
 'use client'
+import { authClient } from '@/lib/auth-client';
 import { Button, Card, FieldError, Input, Label, ListBox, TextArea, TextField, Select } from '@heroui/react';
+import { redirect } from 'next/navigation';
+import toast from 'react-hot-toast';
 
 const AddTutorPage = () => {
-    const onSubmit = async (e)=>{
+    const { data: session, error } = authClient.useSession();
+    const user = session.user
+    console.log(user, 'sesssion');
+    const onSubmit = async (e) => {
         e.preventDefault();
         const formData = new FormData(e.currentTarget);
         const data = Object.fromEntries(formData.entries());
-        // console.log(data, 'tutor adding');
-        const res = await fetch('http://localhost:8080/tutors',{
+        const tutorData = {
+            userId: user?.id,
+            userName: user.name,
+            userEmail: user.email,
+            availableDays : data.availableDays,
+            experience: data.experience,
+            fee: data.fee,
+            location: data.location,
+            tutorName: data.name,
+            sessionStartDate: data.sessionStartDate,
+            slot: data.slot,
+            subject: data.subject,
+            teachingMode : data.teachingMode,
+            tutorImageUrl: data.tutorImageUrl
+
+        }
+        console.log(tutorData, 'tutor adding');
+        const res = await fetch('http://localhost:8080/tutors', {
             method: "POST",
             headers: {
-                'content-type':'application/json'
+                'content-type': 'application/json'
             },
-            body: JSON.stringify(data)
+            body: JSON.stringify(tutorData)
         })
         const tutor = await res.json();
         console.log(tutor, "form add");
+        if (tutor.acknowledged) {
+            toast.success("Tutor Added Successfully");
+            redirect('/tutors')
+        }
     }
     return (
         <div className='p-5 max-w-7xl mx-auto'>

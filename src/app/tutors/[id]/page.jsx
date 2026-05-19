@@ -1,3 +1,4 @@
+import TutorDeleteAlert from '@/components/TutorDeleteAlert';
 import Image from 'next/image';
 
 const TutorDetailsPage = async ({ params }) => {
@@ -15,7 +16,7 @@ const TutorDetailsPage = async ({ params }) => {
                         alt={name}
                         width={500} height={500} />
                 </figure>
-                <div className="space-y-10 mt-5 ml-20 card-body">
+                <div className="space-y-10 mt-5 card-body">
                     <div className="space-y-3">
                         <h2 className="font-bold text-2xl">{name}</h2>
                         <p className='text-muted mb-10'>{subject}</p>

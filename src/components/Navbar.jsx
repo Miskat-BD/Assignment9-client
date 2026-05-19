@@ -11,9 +11,13 @@ const Navbar = () => {
     const links = <>
         <li><NavLink href={'/'}>Home</NavLink></li>
         <li><NavLink href={'/tutors'}>Tutors</NavLink></li>
-        <li><NavLink href={'/add-tutor'}>Add Tutors</NavLink></li>
+        
+        {
+            user && <> <li><NavLink href={'/add-tutor'}>Add Tutors</NavLink></li>
         <li><NavLink href={'/my-tutors'}>My Tutors</NavLink></li>
-        <li><NavLink href={'/my-booked-session'}>My Booked Sessions</NavLink></li>
+        <li><NavLink href={'/my-booked-session'}>My Booked Sessions</NavLink></li></>
+        }
+        
     </>
     return (
         <div className="  bg-base-100 shadow-sm">
