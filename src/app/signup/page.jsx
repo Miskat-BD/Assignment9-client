@@ -1,6 +1,7 @@
 'use client'
 import { authClient } from '@/lib/auth-client';
 import { Button, Card, Description, FieldError, Form, Input, Label, Separator, TextField } from '@heroui/react';
+import Link from 'next/link';
 import toast from 'react-hot-toast';
 import { FcGoogle } from 'react-icons/fc';
 
@@ -18,12 +19,17 @@ const SignUpPage = () => {
             callbackURL: "/",
         });
         // console.log({data, error});
-        if(data){
+        if (data) {
             toast.success("Sign Up Successfully")
         }
-        if(error){
+        if (error) {
             toast.error(`${error.message}`)
         }
+    }
+    const handleGoogle = async () => {
+        await authClient.signIn.social({
+            provider: "google"
+        })
     }
     return (
         <div className="max-w-7xl mx-auto my-20">
@@ -31,7 +37,7 @@ const SignUpPage = () => {
                 <h1 className="text-2xl font-bold">Create Account</h1>
                 <p className="text-[#6C696D]">Create your account to start learning</p>
             </div>
-            <Card className="">
+            <Card className="max-w-3xl mx-auto">
                 <Form onSubmit={onSubmit} className="flex w-96 flex-col gap-4  justify-center mx-auto">
                     <TextField
                         isRequired
@@ -102,8 +108,9 @@ const SignUpPage = () => {
                     <Separator />
                 </div>
                 <div className="w-96 mx-auto">
-                    <Button variant="outline" className={'w-full'}><FcGoogle /> Sign up With Google</Button>
+                    <Button onClick={handleGoogle} variant="outline" className={'w-full'}><FcGoogle /> Sign up With Google</Button>
                 </div>
+                <p className="text-center">Already have an account?<span className="text-blue-500"><Link href={'/login'}> Login</Link></span></p>
             </Card>
         </div>
     );

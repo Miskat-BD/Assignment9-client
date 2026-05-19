@@ -2,6 +2,7 @@
 import { authClient } from "@/lib/auth-client";
 import { Check } from "@gravity-ui/icons";
 import { Button, Card, Description, FieldError, Form, Input, Label, Separator, TextField } from "@heroui/react";
+import Link from "next/link";
 import toast from "react-hot-toast";
 import { FcGoogle } from "react-icons/fc";
 
@@ -23,13 +24,18 @@ const LoginPage = () => {
             toast.error(`${error.message}`)
         }
     }
+    const handleGoogle = async()=>{
+        await authClient.signIn.social({
+            provider: "google"
+        })
+    }
     return (
         <div className="max-w-7xl mx-auto my-20">
             <div className="my-3 text-center">
                 <h1 className="text-2xl font-bold">Login</h1>
                 <p className="text-[#6C696D]">Welcome back! Please login to continue</p>
             </div>
-            <Card className="">
+            <Card className="max-w-3xl mx-auto">
                 <Form onSubmit={onSubmit} className="flex w-96 flex-col gap-4 justify-center mx-auto">
                     <TextField
                         isRequired
@@ -83,8 +89,9 @@ const LoginPage = () => {
                     <Separator />
                 </div>
                 <div className="w-96 mx-auto">
-                    <Button variant="outline" className={'w-full'}><FcGoogle /> Sign In With Google</Button>
+                    <Button onClick={handleGoogle} variant="outline" className={'w-full'}><FcGoogle /> Sign In With Google</Button>
                 </div>
+                <p className="text-center">Don’t have an account? <span className="text-blue-500"><Link href={'/signup'}>Register</Link></span></p>
             </Card>
         </div>
     );
