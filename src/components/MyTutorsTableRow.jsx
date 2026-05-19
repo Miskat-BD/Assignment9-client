@@ -6,7 +6,7 @@ import TutorDeleteAlert from './TutorDeleteAlert';
 
 const MyTutorsTableRow = ({ myTutor }) => {
     const { _id, tutorName, subject, availableDays, fee, slot, sessionStartDate } = myTutor;
-    console.log('_id, ', myTutor);
+    // console.log('_id, ', myTutor);
     return (
         <Table.Row>
             <Table.Cell>{tutorName}</Table.Cell>
