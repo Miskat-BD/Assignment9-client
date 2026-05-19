@@ -1,8 +1,13 @@
-import { Button } from "@heroui/react";
+'use client'
 import Link from "next/link";
 import NavLink from "./NavLink";
+import { authClient } from "@/lib/auth-client";
+import Image from "next/image";
 
 const Navbar = () => {
+    const { data: session, error } = authClient.useSession()
+    // console.log(session, 'session');
+    const user = session?.user
     const links = <>
         <li><NavLink href={'/'}>Home</NavLink></li>
         <li><NavLink href={'/tutors'}>Tutors</NavLink></li>
@@ -33,29 +38,35 @@ const Navbar = () => {
                         </ul>
                     </div>
                     <div className="navbar-end">
-                        <div className="dropdown dropdown-end">
-                            <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
-                                <div className="w-10 rounded-full">
-                                    <img
-                                        alt="Tailwind CSS Navbar component"
-                                        src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" />
+                        {
+                            user ? <div className="dropdown dropdown-end">
+                                <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
+                                    <div className="w-15 rounded-full">
+                                        <Image
+                                            alt={user?.name}
+                                            src={user?.image}
+                                            width={200} height={200} />
+                                    </div>
                                 </div>
+                                <ul
+                                    tabIndex="-1"
+                                    className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
+                                    <li>
+                                        <a className="justify-between">
+                                            Profile
+                                        </a>
+                                    </li>
+                                    <li onClick={async()=> await authClient.signOut()}><a>Logout</a></li>
+                                </ul>
+                            </div> : <div className="">
+                                <Link href={'/login'}><button className="btn btn-primary text-white mr-4">Login</button></Link>
+                                <Link href={'/signup'}><button className="btn btn-info btn-outline text-info">Register</button></Link>
                             </div>
-                            <ul
-                                tabIndex="-1"
-                                className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
-                                <li>
-                                    <a className="justify-between">
-                                        Profile
-                                    </a>
-                                </li>
-                                <li><a>Logout</a></li>
-                            </ul>
-                        </div>
-                        <div className="">
-                            <Link href={'/login'}><button className="btn btn-primary text-white">Login</button></Link>
-                            <Link href={'/signup'}><button className="btn btn-info text-white">Register</button></Link>
-                        </div>
+                        }
+
+
+
+
                     </div>
                 </div>
             </div>

@@ -1,14 +1,27 @@
 "use client";
+import { authClient } from "@/lib/auth-client";
 import { Check } from "@gravity-ui/icons";
 import { Button, Card, Description, FieldError, Form, Input, Label, Separator, TextField } from "@heroui/react";
+import toast from "react-hot-toast";
 import { FcGoogle } from "react-icons/fc";
 
 const LoginPage = () => {
-    const onSubmit = (e)=>{
+    const onSubmit = async (e) => {
         e.preventDefault();
         const formData = new FormData(e.currentTarget);
-        const data = Object.fromEntries(formData.entries());
-        console.log(data, 'login');
+        const user = Object.fromEntries(formData.entries());
+        // console.log(user, 'login');
+        const { data, error } = await authClient.signIn.email({
+            email: user.email, 
+            password: user.password,
+            callbackURL: "/",
+        });
+        if(data){
+            toast.success("Login Successfully")
+        }
+        if(error){
+            toast.error(`${error.message}`)
+        }
     }
     return (
         <div className="max-w-7xl mx-auto my-20">
@@ -65,7 +78,7 @@ const LoginPage = () => {
                 <div className="flex justify-center items-center gap-4 w-96 mx-auto">
                     <Separator />
                     <div className="whitespace-nowrap">
-                        <h1>Or sign up with</h1>
+                        <h1>Or sign in with</h1>
                     </div>
                     <Separator />
                 </div>

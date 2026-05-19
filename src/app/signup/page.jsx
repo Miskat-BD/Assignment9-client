@@ -1,13 +1,29 @@
 'use client'
+import { authClient } from '@/lib/auth-client';
 import { Button, Card, Description, FieldError, Form, Input, Label, Separator, TextField } from '@heroui/react';
+import toast from 'react-hot-toast';
 import { FcGoogle } from 'react-icons/fc';
 
 const SignUpPage = () => {
-    const onSubmit = (e)=>{
+    const onSubmit = async (e) => {
         e.preventDefault();
         const formData = new FormData(e.currentTarget);
-        const data = Object.fromEntries(formData.entries());
-        console.log(data, 'signup');
+        const user = Object.fromEntries(formData.entries());
+        // console.log(user, 'signup');
+        const { data, error } = await authClient.signUp.email({
+            name: user.name, // required
+            email: user.email, // required
+            password: user.password, // required
+            image: user.image,
+            callbackURL: "/",
+        });
+        // console.log({data, error});
+        if(data){
+            toast.success("Sign Up Successfully")
+        }
+        if(error){
+            toast.error(`${error.message}`)
+        }
     }
     return (
         <div className="max-w-7xl mx-auto my-20">
