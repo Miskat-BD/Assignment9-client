@@ -1,5 +1,10 @@
 import TutorCard from "@/components/TutorCard";
 
+export const metadata = {
+  title: "Tutors | MediQueue",
+  description: "Tutor Booking System",
+};
+
 const TutorsPage = async () => {
     const res = await fetch('http://localhost:8080/tutors');
     const tutors = await res.json();
