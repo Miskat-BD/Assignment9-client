@@ -10,7 +10,7 @@ const TutorCard = ({ tutor }) => {
                     <Image
                         src={tutor.tutorImageUrl}
                         width={400} height={300}
-                        alt="Shoes" />
+                        alt="tutor-img" />
                 </figure>
                 <div className="card-body">
                     <h2 className="card-title">{tutor.name || tutor.tutorName}</h2>

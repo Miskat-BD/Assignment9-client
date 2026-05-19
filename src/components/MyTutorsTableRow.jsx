@@ -3,6 +3,7 @@ import React from 'react';
 import { MdOutlineModeEdit } from 'react-icons/md';
 import { RiDeleteBin6Line } from 'react-icons/ri';
 import TutorDeleteAlert from './TutorDeleteAlert';
+import TutorEditModal from './TutorEditModal';
 
 const MyTutorsTableRow = ({ myTutor }) => {
     const { _id, tutorName, subject, availableDays, fee, slot, sessionStartDate } = myTutor;
@@ -18,7 +19,7 @@ const MyTutorsTableRow = ({ myTutor }) => {
             <Table.Cell>
                 <div className="flex gap-5">
                     <TutorDeleteAlert myTutor={myTutor} />
-                    <button className='text-green-500'><MdOutlineModeEdit /></button>
+                    <TutorEditModal myTutor={myTutor}/>
                 </div>
             </Table.Cell>
         </Table.Row>

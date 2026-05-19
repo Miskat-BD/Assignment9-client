@@ -23,7 +23,7 @@ const MyTutorsPage = async () => {
         cache: 'no-store'
     });
     const myTutors = await res.json();
-    console.log(myTutors, 'my');
+    // console.log(myTutors, 'my');
     return (
         <div className='max-w-7xl mx-auto my-10'>
             {
