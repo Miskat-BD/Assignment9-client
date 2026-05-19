@@ -13,7 +13,7 @@ const TutorCard = ({ tutor }) => {
                         alt="Shoes" />
                 </figure>
                 <div className="card-body">
-                    <h2 className="card-title">{tutor.name}</h2>
+                    <h2 className="card-title">{tutor.name || tutor.tutorName}</h2>
                     <p>Subject: {tutor.subject}</p>
                     <p>Session Start: {tutor.sessionStartDate}</p>
                     <div className="card-actions justify-center">

@@ -6,8 +6,8 @@ import toast from 'react-hot-toast';
 
 const AddTutorPage = () => {
     const { data: session, error } = authClient.useSession();
-    const user = session.user
-    console.log(user, 'sesssion');
+    const user = session?.user
+    // console.log(user, 'sesssion');
     const onSubmit = async (e) => {
         e.preventDefault();
         const formData = new FormData(e.currentTarget);
@@ -28,7 +28,7 @@ const AddTutorPage = () => {
             tutorImageUrl: data.tutorImageUrl
 
         }
-        console.log(tutorData, 'tutor adding');
+        // console.log(tutorData, 'tutor adding');
         const res = await fetch('http://localhost:8080/tutors', {
             method: "POST",
             headers: {
@@ -37,7 +37,7 @@ const AddTutorPage = () => {
             body: JSON.stringify(tutorData)
         })
         const tutor = await res.json();
-        console.log(tutor, "form add");
+        // console.log(tutor, "form add");
         if (tutor.acknowledged) {
             toast.success("Tutor Added Successfully");
             redirect('/tutors')

@@ -1,10 +1,11 @@
 'use client'
 import { AlertDialog, Button } from "@heroui/react";
 import { redirect } from "next/navigation";
+import { RiDeleteBin6Line } from "react-icons/ri";
 import { toast } from "react-toastify";
 
-const TutorDeleteAlert = ({ tutor }) => {
-    const {_id, name, tutorImageUrl, subject, teachingMode, location, availableDays, sessionStartDate, slot, fee, experience } = tutor;
+const TutorDeleteAlert = ({ myTutor }) => {
+    const {_id, name, tutorImageUrl, subject, teachingMode, location, availableDays, sessionStartDate, slot, fee, experience, tutorName } = myTutor;
     const handleDelete = async () => {
         const res = await fetch(`http://localhost:8080/tutors/${_id}`,{
             method: "DELETE",
@@ -16,13 +17,13 @@ const TutorDeleteAlert = ({ tutor }) => {
         // console.log(data);
         if(data.deletedCount > 0){
             toast.warning('Tutor is Deleted');
-            redirect('/tutors')
+            redirect('/my-tutors')
         }
     }
     return (
         <div>
             <AlertDialog>
-                <Button className='btn btn-error btn-outline' variant="danger">Delete</Button>
+                <Button variant="outline" className='text-red-500'><RiDeleteBin6Line /></Button>
                 <AlertDialog.Backdrop>
                     <AlertDialog.Container>
                         <AlertDialog.Dialog className="sm:max-w-100">
@@ -33,7 +34,7 @@ const TutorDeleteAlert = ({ tutor }) => {
                             </AlertDialog.Header>
                             <AlertDialog.Body>
                                 <p>
-                                    This will permanently delete <strong>{name}</strong> and all of its
+                                    This will permanently delete <strong>{name || tutorName}</strong> and all of its
                                     data. This action cannot be undone.
                                 </p>
                             </AlertDialog.Body>

@@ -3,6 +3,7 @@ import TutorCard from "@/components/TutorCard";
 const TutorsPage = async () => {
     const res = await fetch('http://localhost:8080/tutors');
     const tutors = await res.json();
+    console.log(tutors, 'all');
     return (
         <div className="max-w-7xl mx-auto">
             <h1 className="text-2xl font-bold my-10">All Tutors</h1>

@@ -3,6 +3,8 @@ import Link from "next/link";
 import NavLink from "./NavLink";
 import { authClient } from "@/lib/auth-client";
 import Image from "next/image";
+import { Router } from "next/router";
+import { useRouter } from "next/navigation";
 
 const Navbar = () => {
     const { data: session, error } = authClient.useSession()
@@ -11,14 +13,20 @@ const Navbar = () => {
     const links = <>
         <li><NavLink href={'/'}>Home</NavLink></li>
         <li><NavLink href={'/tutors'}>Tutors</NavLink></li>
-        
+
         {
             user && <> <li><NavLink href={'/add-tutor'}>Add Tutors</NavLink></li>
-        <li><NavLink href={'/my-tutors'}>My Tutors</NavLink></li>
-        <li><NavLink href={'/my-booked-session'}>My Booked Sessions</NavLink></li></>
+                <li><NavLink href={'/my-tutors'}>My Tutors</NavLink></li>
+                <li><NavLink href={'/my-booked-session'}>My Booked Sessions</NavLink></li></>
         }
-        
+
     </>
+    const router = useRouter();
+    const handleLogOut = async () => {
+        await authClient.signOut();
+        router.push('/');
+        router.refresh();
+    }
     return (
         <div className="  bg-base-100 shadow-sm">
             <div className="container mx-auto">
@@ -60,7 +68,7 @@ const Navbar = () => {
                                             Profile
                                         </a>
                                     </li>
-                                    <li onClick={async()=> await authClient.signOut()}><a>Logout</a></li>
+                                    <li onClick={handleLogOut}><a>Logout</a></li>
                                 </ul>
                             </div> : <div className="">
                                 <Link href={'/login'}><button className="btn btn-primary text-white mr-4">Login</button></Link>
