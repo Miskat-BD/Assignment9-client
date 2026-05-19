@@ -5,7 +5,7 @@ import React from 'react';
 const TutorCard = ({ tutor }) => {
     return (
         <div>
-            <div className="card bg-base-100 shadow-sm border">
+            <div className="card  shadow-sm border">
                 <figure>
                     <Image
                         src={tutor.tutorImageUrl}

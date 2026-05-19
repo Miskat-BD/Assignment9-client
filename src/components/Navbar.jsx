@@ -5,6 +5,7 @@ import { authClient } from "@/lib/auth-client";
 import Image from "next/image";
 import { Router } from "next/router";
 import { useRouter } from "next/navigation";
+import ThemeSwitch from "./ThemeSwitch";
 
 const Navbar = () => {
     const { data: session, error } = authClient.useSession()
@@ -28,7 +29,7 @@ const Navbar = () => {
         router.refresh();
     }
     return (
-        <div className="  bg-base-100 shadow-sm">
+        <div className=" shadow-sm">
             <div className="container mx-auto">
                 <div className="navbar">
                     <div className="navbar-start">
@@ -42,7 +43,7 @@ const Navbar = () => {
                                 {links}
                             </ul>
                         </div>
-                        <Link href={'/'} className="text-3xl text-primary font-bold">MediQueue</Link>
+                        <Link href={'/'} className="text-2xl sm:text-3xl text-primary font-bold">MediQueue</Link>
                     </div>
                     <div className="navbar-center hidden lg:flex">
                         <ul className="menu menu-horizontal px-1 gap-3">
@@ -62,7 +63,7 @@ const Navbar = () => {
                                 </div>
                                 <ul
                                     tabIndex="-1"
-                                    className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
+                                    className="menu menu-sm dropdown-content bg-purple-200 text-black rounded-box z-1 mt-3 w-52 p-2 shadow">
                                     <li>
                                         <a className="justify-between">
                                             Profile
@@ -75,13 +76,11 @@ const Navbar = () => {
                                 <Link href={'/signup'}><button className="btn btn-info btn-outline text-info">Register</button></Link>
                             </div>
                         }
-
-
-
-
+                        <ThemeSwitch></ThemeSwitch>
                     </div>
                 </div>
             </div>
+            
         </div>
     );
 };

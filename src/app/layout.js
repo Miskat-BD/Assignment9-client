@@ -5,6 +5,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { Toaster } from "react-hot-toast";
 import { ToastContainer } from "react-toastify";
+import NextThemeProvider from "@/NextThemeProvider/NextThemeProvider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -24,13 +25,16 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html
-      data-theme="light"
+
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      suppressHydrationWarning
     >
-      <body className="min-h-full flex flex-col">
-        <Navbar />
-        <main>{children}</main>
+      <body className="min-h-full flex flex-col bg-background text-foreground">
+        <NextThemeProvider>
+          <Navbar />
+          <main>{children}</main>
+        </NextThemeProvider>
         <Footer />
         <ToastContainer />
         <Toaster />

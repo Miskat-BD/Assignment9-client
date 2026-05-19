@@ -11,7 +11,7 @@ const TutorDetailsPage = async ({ params }) => {
     const { name, tutorImageUrl, subject, teachingMode, location, availableDays, sessionStartDate, slot, fee, experience, tutorName } = tutor;
     return (
         <div className='max-w-7xl mx-auto my-20'>
-            <div className="card lg:card-side bg-base-100 shadow-sm">
+            <div className="card lg:card-side  shadow-sm">
                 <figure>
                     <Image
                         src={tutorImageUrl}

@@ -2,10 +2,12 @@
 import { authClient } from '@/lib/auth-client';
 import { Button, Card, Description, FieldError, Form, Input, Label, Separator, TextField } from '@heroui/react';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import toast from 'react-hot-toast';
 import { FcGoogle } from 'react-icons/fc';
 
 const SignUpPage = () => {
+    const router = useRouter();
     const onSubmit = async (e) => {
         e.preventDefault();
         const formData = new FormData(e.currentTarget);
@@ -17,7 +19,14 @@ const SignUpPage = () => {
             password: user.password, // required
             image: user.image,
             callbackURL: "/",
-        });
+        },
+        {
+            onSuccess: async ()=>{
+                await authClient.signOut();
+                router.push('/login')
+            }
+        }
+    );
         // console.log({data, error});
         if (data) {
             toast.success("Sign Up Successfully")
