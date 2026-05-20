@@ -25,7 +25,7 @@ const TutorEditModal = ({ myTutor }) => {
             body: JSON.stringify(updateData)
         });
         const tutor = await res.json();
-        console.log(tutor, 'updated data');
+        // console.log(tutor, 'updated data');
         if(tutor.modifiedCount > 0){
             toast.success('Tutor Information Updated');
             router.push('/my-tutors');

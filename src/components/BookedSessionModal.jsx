@@ -25,12 +25,12 @@ const BookedSessionModal = ({ tutor }) => {
             body: JSON.stringify(bookingData)
         })
         const booking = await res.json();
-        console.log(booking, 'res');
+        // console.log(booking, 'res');
         if (booking.acknowledged) {
             toast.success("Session Booked Successfully");
             router.push(`/tutors/${tutor._id}`);
             router.refresh();
-            
+
         }
         else if (!booking.success) {
             toast.error(`${booking.message}`)
