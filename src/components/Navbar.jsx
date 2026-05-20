@@ -50,7 +50,7 @@ const Navbar = () => {
                             {links}
                         </ul>
                     </div>
-                    <div className="navbar-end">
+                    <div className="navbar-end gap-2">
                         {
                             user ? <div className="dropdown dropdown-end">
                                 <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
@@ -76,7 +76,7 @@ const Navbar = () => {
                                 <Link href={'/signup'}><button className="btn btn-info btn-outline text-info">Register</button></Link>
                             </div>
                         }
-                        <ThemeSwitch></ThemeSwitch>
+                        <div className=""><ThemeSwitch></ThemeSwitch></div>
                     </div>
                 </div>
             </div>

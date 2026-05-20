@@ -1,3 +1,4 @@
+import BookedSessionModal from '@/components/BookedSessionModal';
 import Image from 'next/image';
 export const metadata = {
     title: "Tutor Details | MediQueue",
@@ -31,7 +32,7 @@ const TutorDetailsPage = async ({ params }) => {
                         <p className=''><span className='font-bold'>Remaininig Slot: </span>{slot}</p>
                     </div>
                     <div className="flex justify-center sm:justify-end">
-                        <button className="btn btn-primary btn-outline text-primary">Book Session</button>
+                        <BookedSessionModal tutor={tutor}></BookedSessionModal>
                     </div>
                 </div>
             </div>

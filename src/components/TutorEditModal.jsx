@@ -8,10 +8,14 @@ const TutorEditModal = ({ myTutor }) => {
     // console.log(myTutor, 'edit');
     const { _id, tutorName, subject, availableDays, fee, slot, sessionStartDate, userName, userId, experience, tutorImageUrl, teachingMode, location } = myTutor;
     const router = useRouter();
+    const formatForInput = sessionStartDate ? new Date(sessionStartDate).toISOString().split('T')[0] : "";
     const onSubmit = async (e) => {
         e.preventDefault()
         const formData = new FormData(e.currentTarget);
         const updateData = Object.fromEntries(formData.entries());
+        if (updateData.sessionStartDate) {
+            updateData.sessionStartDate = new Date(updateData.sessionStartDate);
+        }
         // console.log(updateData, 'upadted');
         const res = await fetch(`http://localhost:8080/tutors/${_id}`, {
             method: 'PATCH',
@@ -114,24 +118,15 @@ const TutorEditModal = ({ myTutor }) => {
                                                 <Input
                                                     type="number"
                                                     placeholder="1299"
-                                                    className="rounded-2xl"
+                                                    className="rounded-2xl "
                                                 />
                                                 <FieldError />
                                             </TextField>
 
-                                            {/* slot */}
-                                            <TextField defaultValue={slot} name="slot" type='number' isRequired>
-                                                <Label>Total slot</Label>
-                                                <Input
-                                                    placeholder=""
-                                                    className="rounded-2xl"
-                                                />
-                                                <FieldError />
-                                            </TextField>
 
                                             {/* Session Start Date */}
                                             <div className="md:col-span-2">
-                                                <TextField defaultValue={sessionStartDate} name="sessionStartDate" type="date" isRequired>
+                                                <TextField defaultValue={formatForInput} name="sessionStartDate" type="date" isRequired>
                                                     <Label>Session Start Date</Label>
                                                     <Input type="date" className="rounded-2xl" />
                                                     <FieldError />

@@ -23,8 +23,8 @@ const AddTutorForm = () => {
             fee: data.fee,
             location: data.location,
             tutorName: data.name,
-            sessionStartDate: data.sessionStartDate,
-            slot: data.slot,
+            sessionStartDate: new Date(data.sessionStartDate),
+            slot: parseInt(data.slot),
             subject: data.subject,
             teachingMode: data.teachingMode,
             tutorImageUrl: data.tutorImageUrl
