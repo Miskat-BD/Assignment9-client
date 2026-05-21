@@ -17,7 +17,7 @@ const BookedSessionModal = ({ tutor }) => {
             ...data,
             slot: tutor.slot,
         }
-        const res = await fetch('http://localhost:8080/bookings', {
+        const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/bookings`, {
             method: "POST",
             headers: {
                 'content-type': 'application/json'

@@ -7,7 +7,7 @@ import { toast } from "react-toastify";
 const TutorDeleteAlert = ({ myTutor }) => {
     const {_id, name, tutorImageUrl, subject, teachingMode, location, availableDays, sessionStartDate, slot, fee, experience, tutorName } = myTutor;
     const handleDelete = async () => {
-        const res = await fetch(`http://localhost:8080/tutors/${_id}`,{
+        const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/tutors/${_id}`,{
             method: "DELETE",
             headers: {
                 'conetent-type': 'application/json'

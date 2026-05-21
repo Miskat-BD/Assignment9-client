@@ -17,7 +17,7 @@ const TutorEditModal = ({ myTutor }) => {
             updateData.sessionStartDate = new Date(updateData.sessionStartDate);
         }
         // console.log(updateData, 'upadted');
-        const res = await fetch(`http://localhost:8080/tutors/${_id}`, {
+        const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/tutors/${_id}`, {
             method: 'PATCH',
             headers: {
                 'content-type':'application/json'

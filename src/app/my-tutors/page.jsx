@@ -22,7 +22,7 @@ const MyTutorsPage = async () => {
         redirect('/')
     }
     const user = session?.user;
-    const res = await fetch(`http://localhost:8080/my-tutor/${user.id}`,{
+    const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/my-tutor/${user.id}`,{
         cache: 'no-store',
         headers: {
             authorization : `Bearer ${token}`

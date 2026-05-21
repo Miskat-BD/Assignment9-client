@@ -18,7 +18,7 @@ const Banner = () => {
                                 <h1 className="mb-5 text-2xl md:text-4xl font-bold">Learn from Expert Tutors</h1>
 
 
-                                <Link href={'/tutors'}><button className="btn btn-primary w-28">Tutors</button></Link>
+                                <Link href={'/tutors?search='}><button className="btn btn-primary w-28">Tutors</button></Link>
                             </div>
                         </div>
                     </div>
@@ -41,7 +41,7 @@ const Banner = () => {
                                 <h1 className="mb-5 text-2xl md:text-4xl font-bold">Book Your Sessions Easily</h1>
 
 
-                                <Link href={'/tutors'}><button className="btn btn-primary w-28">Tutors</button></Link>
+                                <Link href={'/tutors?search='}><button className="btn btn-primary w-28">Tutors</button></Link>
                             </div>
                         </div>
                     </div>
@@ -64,7 +64,7 @@ const Banner = () => {
                                 <h1 className="mb-5 text-2xl md:text-4xl font-bold">Upgrade Your Skills</h1>
 
 
-                                <Link href={'/tutors'}><button className="btn btn-primary w-28">Tutors</button></Link>
+                                <Link href={'/tutors?search='}><button className="btn btn-primary w-28">Tutors</button></Link>
                             </div>
                         </div>
                     </div>
@@ -80,58 +80,3 @@ const Banner = () => {
 };
 
 export default Banner;
-{/* <>
-    <div
-        className="hero min-h-80 md:min-h-screen bg-cover bg-center"
-        style={{
-            backgroundImage:
-                "url(/banner-1.jpg)",
-        }}
-    >
-        <div className="hero-overlay bg-black/60"></div>
-        <div className="hero-content text-neutral-content text-center">
-            <div className="max-w-md">
-                <h1 className="mb-5 text-2xl md:text-4xl font-bold">Learn from Expert Tutors</h1>
-
-
-                <Link href={'/tutors'}><button className="btn btn-primary w-28">Tutors</button></Link>
-            </div>
-        </div>
-    </div>
-
-    <div
-        className="hero min-h-80 md:min-h-screen bg-cover bg-center"
-        style={{
-            backgroundImage:
-                "url(/banner-2.jpg)",
-        }}
-    >
-        <div className="hero-overlay bg-black/60"></div>
-        <div className="hero-content text-neutral-content text-center">
-            <div className="max-w-md">
-                <h1 className="mb-5 text-2xl md:text-4xl font-bold">Book Your Sessions Easily</h1>
-
-
-                <Link href={'/tutors'}><button className="btn btn-primary w-28">Tutors</button></Link>
-            </div>
-        </div>
-    </div>
-
-    <div
-        className="hero min-h-80 md:min-h-screen bg-cover bg-center"
-        style={{
-            backgroundImage:
-                "url(/banner-3.avif)",
-        }}
-    >
-        <div className="hero-overlay bg-black/60"></div>
-        <div className="hero-content text-neutral-content text-center">
-            <div className="max-w-md">
-                <h1 className="mb-5 text-2xl md:text-4xl font-bold">Book Your Sessions Easily</h1>
-
-
-                <Link href={'/tutors'}><button className="btn btn-primary w-28">Tutors</button></Link>
-            </div>
-        </div>
-    </div>
-</> */}

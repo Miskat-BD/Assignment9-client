@@ -33,7 +33,7 @@ const AddTutorForm = () => {
         }
         const {data:tokenData} = await authClient.token()
         // console.log(tokenData, 'tutor adding');
-        const res = await fetch('http://localhost:8080/tutors', {
+        const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/tutors`, {
             method: "POST",
             headers: {
                 'content-type': 'application/json',
@@ -45,7 +45,7 @@ const AddTutorForm = () => {
         // console.log(tutor, "form add");
         if (tutor.acknowledged) {
             toast.success("Tutor Added Successfully");
-            router.push('/tutors');
+            router.push('/tutors?search=');
             router.refresh();
         }
     }

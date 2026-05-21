@@ -10,7 +10,7 @@ export const metadata = {
 const TutorsPage = async ({searchParams}) => {
     const search = await searchParams || ''
     console.log(search);
-    const res = await fetch(`http://localhost:8080/tutors?search=${search?.search}`,{
+    const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/tutors?search=${search?.search}`,{
         cache: 'no-store'
     });
     const tutors = await res.json();

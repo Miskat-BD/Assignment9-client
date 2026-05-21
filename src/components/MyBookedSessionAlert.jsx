@@ -7,7 +7,7 @@ import { toast } from 'react-toastify';
 const MyBookedSessionAlert = ({myBooked}) => {
     const router = useRouter();
     const handleCancelSession = async ()=>{
-        const res = await fetch(`http://localhost:8080/bookings/${myBooked._id}`,{
+        const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/bookings/${myBooked._id}`,{
             method: "PATCH",
             headers: {
                 'content-type' : 'applicatiob/json'

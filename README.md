@@ -1,36 +1,92 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# MediQueue – Tutor Booking System
 
-## Getting Started
+🌐 **Live Website:**  
+https://mediqueue-project.vercel.app/
 
-First, run the development server:
+💻 **Client Repository:**  
+https://github.com/Miskat-BD/Assignment9-client
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+---
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 📚 Project Overview
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+MediQueue is a modern Tutor Booking System designed to simplify the process of finding tutors, scheduling learning sessions, and managing bookings efficiently.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Students can explore available tutors, view tutor details, book sessions based on availability, and manage their booked sessions from a personalized dashboard.
 
-## Learn More
+The system reduces manual scheduling conflicts and provides a smoother and more organized learning experience.
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## ✨ Key Features
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### 🔐 Authentication System
+- Email & Password authentication
+- Google Login integration
+- Protected private routes
+- Persistent login after page refresh
 
-## Deploy on Vercel
+### 👨‍🏫 Tutor Management
+- Add tutor information
+- Edit tutor details through modal
+- Delete tutor with confirmation
+- View personal tutor listings
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### 📅 Session Booking System
+- Book tutor sessions
+- Auto-generated booking status
+- Session date restriction
+- Automatic slot reduction after booking
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### 🔎 Search & Filter
+- Search tutors by tutor name
+- Case-insensitive search using MongoDB `$regex`
+
+### 🎨 User Experience
+- Responsive design
+- Dynamic page titles
+- Loading spinner
+- Toast notifications
+- Empty state UI
+- Dark / Light theme support
+
+---
+
+## 🖥️ Pages Included
+
+### Public Pages
+- Home
+- Tutors
+- Login
+- Register
+
+### Private Pages
+- Tutor Details
+- Add Tutor
+- My Tutors
+- My Booked Sessions
+
+---
+
+## 🛠️ Technologies Used
+
+### Frontend
+- Next.js
+- React.js
+- Tailwind CSS
+- HeroUI
+- React Hot Toast
+
+### Backend
+- Node.js
+- Express.js
+- MongoDB
+
+### Authentication & Security
+- Better Auth
+- JWT Authentication
+- Google Authentication
+
+### Deployment
+- Vercel (Client)
+- Render / Node Hosting (Server)

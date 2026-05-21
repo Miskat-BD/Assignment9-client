@@ -18,14 +18,14 @@ const MyBookedSession = async () => {
     })
     const user = session?.user;
     // console.log(user, 'user session');
-    const res = await fetch('http://localhost:8080/bookings', {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/bookings`, {
         headers: {
             authorization: `Bearer ${token}`
         }
     });
     const data = await res.json();
-    // console.log(data, 'session my');
-    const myBookedSessions = data.filter(myBookedSession => myBookedSession.userEmail == user.email);
+    console.log(data, 'session my');
+    const myBookedSessions = data?.filter(myBookedSession => myBookedSession.userEmail == user.email);
     // console.log(myBookedSessions, 'email');
     return (
         <div className="max-w-7xl mx-auto my-10">

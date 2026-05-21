@@ -39,11 +39,11 @@ const Navbar = () => {
                             </div>
                             <ul
                                 tabIndex="-1"
-                                className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
+                                className="menu menu-sm dropdown-content bg-purple-200 text-black rounded-box z-1 mt-3 w-52 p-2 shadow">
                                 {links}
                             </ul>
                         </div>
-                        <Link href={'/'} className="text-2xl sm:text-3xl text-primary font-bold">MediQueue</Link>
+                        <Link href={'/'} className="text-xl sm:text-3xl text-primary font-bold">MediQueue</Link>
                     </div>
                     <div className="navbar-center hidden lg:flex">
                         <ul className="menu menu-horizontal px-1 gap-3">
@@ -71,7 +71,7 @@ const Navbar = () => {
                                     </li>
                                     <li onClick={handleLogOut}><a>Logout</a></li>
                                 </ul>
-                            </div> : <div className="">
+                            </div> : <div className="max-sm:flex gap-1">
                                 <Link href={'/login'}><button className="btn btn-primary text-white mr-4">Login</button></Link>
                                 <Link href={'/signup'}><button className="btn btn-info btn-outline text-info">Register</button></Link>
                             </div>

@@ -1,7 +1,7 @@
 import TutorCard from "./TutorCard";
 
 const HomepageTutors = async () => {
-    const res = await fetch('http://localhost:8080/featured');
+    const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/featured`);
     const tutors = await res.json();
     return (
         <div>
