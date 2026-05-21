@@ -1,11 +1,12 @@
 'use client'
 import { authClient } from '@/lib/auth-client';
 import { Button, Card, FieldError, Input, Label, ListBox, TextArea, TextField, Select } from '@heroui/react';
-import { redirect } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 import toast from 'react-hot-toast';
 
 
 const AddTutorForm = () => {
+    const router = useRouter();
     const { data: session, error } = authClient.useSession();
     const user = session?.user
     // console.log(user, 'sesssion');
@@ -30,11 +31,13 @@ const AddTutorForm = () => {
             tutorImageUrl: data.tutorImageUrl
 
         }
-        // console.log(tutorData, 'tutor adding');
+        const {data:tokenData} = await authClient.token()
+        // console.log(tokenData, 'tutor adding');
         const res = await fetch('http://localhost:8080/tutors', {
             method: "POST",
             headers: {
-                'content-type': 'application/json'
+                'content-type': 'application/json',
+                authorization : `Bearer ${tokenData?.token}`
             },
             body: JSON.stringify(tutorData)
         })
@@ -42,7 +45,8 @@ const AddTutorForm = () => {
         // console.log(tutor, "form add");
         if (tutor.acknowledged) {
             toast.success("Tutor Added Successfully");
-            redirect('/tutors')
+            router.push('/tutors');
+            router.refresh();
         }
     }
     return (

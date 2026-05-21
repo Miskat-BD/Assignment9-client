@@ -11,6 +11,9 @@ export const metadata = {
 };
 
 const MyTutorsPage = async () => {
+    const {token} = await auth.api.getToken({
+        headers : await headers()
+    })
     const session = await auth.api.getSession({
         headers: await headers() // you need to pass the headers object.
     })
@@ -20,7 +23,10 @@ const MyTutorsPage = async () => {
     }
     const user = session?.user;
     const res = await fetch(`http://localhost:8080/my-tutor/${user.id}`,{
-        cache: 'no-store'
+        cache: 'no-store',
+        headers: {
+            authorization : `Bearer ${token}`
+        }
     });
     const myTutors = await res.json();
     // console.log(myTutors, 'my');

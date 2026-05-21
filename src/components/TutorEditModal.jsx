@@ -28,7 +28,7 @@ const TutorEditModal = ({ myTutor }) => {
         // console.log(tutor, 'updated data');
         if(tutor.modifiedCount > 0){
             toast.success('Tutor Information Updated');
-            router.push('/my-tutors');
+            // router.push('/my-tutors');
             router.refresh();
         }
     }
@@ -208,6 +208,7 @@ const TutorEditModal = ({ myTutor }) => {
                                         <Button
                                             type="submit"
                                             variant="outline"
+                                            slot={'close'}
                                             // isLoading={isPending}
                                             className=" rounded-none w-full bg-cyan-500 text-white"
                                         >

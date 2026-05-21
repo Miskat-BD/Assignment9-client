@@ -13,7 +13,7 @@ const Navbar = () => {
     const user = session?.user
     const links = <>
         <li><NavLink href={'/'}>Home</NavLink></li>
-        <li><NavLink href={'/tutors'}>Tutors</NavLink></li>
+        <li><NavLink href={'/tutors?search='}>Tutors</NavLink></li>
 
         {
             user && <> <li><NavLink href={'/add-tutor'}>Add Tutors</NavLink></li>

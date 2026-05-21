@@ -1,4 +1,6 @@
 import BookedSessionModal from '@/components/BookedSessionModal';
+import { auth } from '@/lib/auth';
+import { headers } from 'next/headers';
 import Image from 'next/image';
 export const metadata = {
     title: "Tutor Details | MediQueue",
@@ -6,7 +8,15 @@ export const metadata = {
 };
 const TutorDetailsPage = async ({ params }) => {
     const { id } = await params;
-    const res = await fetch(`http://localhost:8080/tutors/${id}`);
+    const {token} = await auth.api.getToken({
+        headers : await headers()
+    })
+    // console.log(token)
+    const res = await fetch(`http://localhost:8080/tutors/${id}`,{
+        headers: {
+            authorization : `Bearer ${token}`
+        }
+    });
     const tutor = await res.json();
     // console.log(tutor, 'tutor');
     const { name, tutorImageUrl, subject, teachingMode, location, availableDays, sessionStartDate, slot, fee, experience, tutorName } = tutor;
